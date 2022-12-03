@@ -6,7 +6,9 @@ defineProps({
 })
 
 const count = ref(0)
-</script>
+</script> 
+
+
 
 <template>
   <h1>{{ msg }}</h1>
