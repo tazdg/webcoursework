@@ -10,3 +10,19 @@ class User(AbstractUser):
 
     def __str__(self):
         return self.username
+
+
+class Recipe(models.Model):
+    name = models.CharField(max_length=350)
+    popular = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.name
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'popular': self.popular,
+        }
+    
