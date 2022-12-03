@@ -1,6 +1,11 @@
 <template>
+  
+    <header>
+      <h1>{{app_name}}</h1>
+    </header> <!-- The variable app_name is taken from script below -->
+    
   <div>
-    Welcome to {{app_name}} <!-- The variable app_name is taken from script below -->
+
     <Profile/>
   </div>
 </template>

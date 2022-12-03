@@ -1,6 +1,6 @@
 
 <template>
-  <h1>HDBHj</h1>
+  <h2>Profile</h2>
 
 </template>
 
