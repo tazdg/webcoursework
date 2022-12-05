@@ -4,4 +4,10 @@
 </head>
 <body>
     <h1>Welcome to {{name}}</h1>
+    
+    <ul>
+        {% for recipe in recipies %}
+        <li>{{recipe}}</li>
+        {%endfor%}
+    </ul>
 </body>
