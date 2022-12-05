@@ -6,8 +6,10 @@ import datetime
 
 class User(AbstractUser):
     username = models.CharField(max_length=50, unique=True)
+    test = models.CharField(max_length=50, unique=True, default='rwf')
     image = models.ImageField(upload_to='images')
     date_of_birth = models.DateField(default=datetime.date.today)
+
 
     def __str__(self):
         return self.username
