@@ -8,3 +8,9 @@ def helloworld(request):
         'name': 'Auction Genie',
         'recipies': Recipe.objects.all(),
     })
+
+def login(request):
+    return render(request, 'mainapp/login.html', {
+        'name': 'Login Page',
+        
+    })
