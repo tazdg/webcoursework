@@ -6,7 +6,7 @@ import datetime
 
 class User(AbstractUser):
     username = models.CharField(max_length=50, unique=True)
-    image = models.ImageField(upload_to='images')
+    # image = models.ImageField(upload_to='images')
     date_of_birth = models.DateField(default=datetime.date.today)
 
 
@@ -16,10 +16,32 @@ class User(AbstractUser):
     def to_dict(self):
         return {
             'username': self.username,
-            'image': self.image.url if self.image else None,
             'date_of_birth': self.date_of_birth,
         }
 
+
+# Auction model
+class Item(models.Model):
+    title = models.CharField(max_length=50, unique=True)
+    description = models.TextField(max_length=500)
+    image = models.ImageField(upload_to='images')
+    starting_price = models.FloatField()
+    date_ends = models.DateField(default=datetime.date.today)
+    available = models.BooleanField(default=False)
+
+
+    def __str__(self):
+        return self.title
+
+    def to_dict(self):
+        return {
+            'title': self.title,
+            'description': self.description,
+            'image': self.image.url if self.image else None,
+            'starting_price': self.starting_price,
+            'date_ends': self.date_ends,
+            'available': self.available,
+        }
 
 class Recipe(models.Model):
     name = models.CharField(max_length=350)

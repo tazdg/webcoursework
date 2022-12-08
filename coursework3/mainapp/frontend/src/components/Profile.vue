@@ -1,6 +1,7 @@
 
 <template>
-  <h2>Profile(this is the Profile component)</h2>
+  <br>
+  <h2>Profile</h2>
 
 </template>
 

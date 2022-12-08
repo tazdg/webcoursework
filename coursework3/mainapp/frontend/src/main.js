@@ -2,14 +2,20 @@ import { createApp } from 'vue'
 import { createRouter, createWebHistory } from 'vue-router'
 import './style.css'
 import App from './App.vue'
-import Home from './components/Home.vue'
 import About from './components/About.vue'
+import Profile from './components/Profile.vue'
+import Auctions from './components/Auctions.vue'
+import NewAuction from './components/NewAuction.vue'
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
 
 const routes = [
-    { path: '/', name: 'Home', component: Home },
+    { path: '/', name: 'Auctions', component: Auctions },
     { path: '/about', name: 'About', component: About },
+    { path: '/new-auction', name: 'NewAuction', component: NewAuction },
+    { path: '/profile', name: 'Profile', component: Profile },
+
+    
 
 ]
 
