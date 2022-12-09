@@ -22,8 +22,9 @@
 
         <tr v-for="item in items">
           <td>{{item.title}}</td>
+
           <td>{{item.description}}</td>
-          <td>{{item.image}}</td>
+          <td><a href="http://localhost:8000 + {{item.image}}"><img src="http://localhost:8000 + {{item.image}}" width="140" height="140"/></a></td>
           <td>£{{item.starting_price}}</td>
           <td>Approx appointment time: {{item.date_ends}}</td>
           <td v-if="item.available">(Available)</td>
@@ -55,19 +56,6 @@ export default{
             let data = await response.json();
             this.items = data.items;
         },
-
-        
-        async delete_scan(scan){
-          console.log(`Deleting scan, ${scan.id}`)
-          let response = await fetch(`http://localhost:8000/api/scan/${scan.id}/`, {
-            method: 'DELETE',
-            // body: JSON.stringify({
-            //   scan_id: this.scan_id
-            // })
-          })
-          if (response.ok){this.scans = this.scans.filter(s => s.id != scan.id);}
-          else{alert('Deleting scan failed');}
-      }
     },
 
 }

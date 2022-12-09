@@ -19,9 +19,8 @@
       <li class="nav-item active"><router-link to="/about" class="nav-link">About</router-link></li>
       <li class="nav-item active"><router-link to="/" class="nav-link">Auctions</router-link></li>
       <li class="nav-item active"><router-link to="/new-auction" class="nav-link">New Auction</router-link></li>
+      <li class="nav-item active"><router-link to="/messages" class="nav-link">Messages</router-link></li>
       <li class="nav-item active"><router-link to="/profile" class="nav-link">Profile</router-link></li>
- 
-
     </ul>
 
     <!-- Search Function -->

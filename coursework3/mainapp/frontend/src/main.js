@@ -3,9 +3,10 @@ import { createRouter, createWebHistory } from 'vue-router'
 import './style.css'
 import App from './App.vue'
 import About from './components/About.vue'
-import Profile from './components/Profile.vue'
 import Auctions from './components/Auctions.vue'
 import NewAuction from './components/NewAuction.vue'
+import Messages from './components/Messages.vue'
+import Profile from './components/Profile.vue'
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
 
@@ -13,12 +14,9 @@ const routes = [
     { path: '/', name: 'Auctions', component: Auctions },
     { path: '/about', name: 'About', component: About },
     { path: '/new-auction', name: 'NewAuction', component: NewAuction },
+    { path: '/messages', name: 'Messages', component: Messages },
     { path: '/profile', name: 'Profile', component: Profile },
-
-    
-
 ]
-
 
 const router = createRouter({
     // 4. Provide the history implementation to use. We are using the hash history for simplicity here.
