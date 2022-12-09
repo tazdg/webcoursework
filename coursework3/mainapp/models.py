@@ -26,7 +26,7 @@ class Item(models.Model):
     description = models.TextField(max_length=500)
     image = models.ImageField(upload_to='images')
     starting_price = models.FloatField()
-    date_ends = models.DateField(default=datetime.date.today)
+    date_ends = models.DateTimeField(default=datetime.datetime.today)
     available = models.BooleanField(default=False)
 
 

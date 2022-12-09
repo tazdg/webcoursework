@@ -7,7 +7,7 @@
     </div>
 
     <div>
-        <button class="rounded" @click="fetch_items">Fetch items</button>
+        <button class="rounded" @click="fetch_items">Fetch items (remove button later)</button>
         <table class="table table-bordered">
         <tr>
           <th>Title</th>
@@ -17,17 +17,19 @@
           <th>Auction Ends</th>
           <th></th>
           <th></th>
+          <th></th>
         </tr>
 
         <tr v-for="item in items">
           <td>{{item.title}}</td>
           <td>{{item.description}}</td>
-          <td v-if="scan.available">(Available)</td>
-          <td v-if="!scan.available">(Unavailable)</td>
-          <td>£{{scan.price}}</td>
-          <td>Approx appointment time: {{scan.appointment_time}}</td>
-          <td><button class="bg-warning rounded">Edit</button></td>
-          <td><button class="bg-danger rounded" @click="delete_scan(scan)">Delete</button></td>
+          <td>{{item.image}}</td>
+          <td>£{{item.starting_price}}</td>
+          <td>Approx appointment time: {{item.date_ends}}</td>
+          <td v-if="item.available">(Available)</td>
+          <td v-if="!item.available">(Unavailable)</td>
+          <td><button class="bg-primary rounded">Message Seller</button></td>
+          <td><button class="bg-success rounded" @click="delete_scan(scan)">Bid</button></td>
         </tr>
       </table>
     </div>
@@ -49,9 +51,9 @@ export default{
         async fetch_items() {
             //Perform Ajax request to fetch list of scans
             console.log(`fetching..`)
-            let response = await fetch("http://localhost:8000/api/items/");
+            let response = await fetch("http://localhost:8000/mainapp/api/items/");
             let data = await response.json();
-            this.scans = data.scans;
+            this.items = data.items;
         },
 
         
