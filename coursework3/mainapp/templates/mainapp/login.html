@@ -1,4 +1,25 @@
-<!DOCTYPE html>
+{% extends "mainapp/base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block content %}
+    <div class='card shadow mx-auto text-left m-4 p-3 bg-light' style="width:375px;">
+      <h1 class="text-info">Auction Genie</h1>
+        <div class='h4 mb-4'>
+          Log in
+        </div>
+        {% crispy form %}
+
+        <a class="btn btn-outline-primary mt-3" href="{% url 'signup' %}" >
+          Sign Up 
+        </a>
+    </div>
+
+{% endblock %}
+
+
+
+<!-- <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8"/>
@@ -87,4 +108,4 @@ h2{
     font-size: 35px;
 }
 </style>
-      
+       -->

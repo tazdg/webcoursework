@@ -24,9 +24,10 @@
           <td>{{item.title}}</td>
 
           <td>{{item.description}}</td>
-          <td><a href="http://localhost:8000 + {{item.image}}"><img src="http://localhost:8000 + {{item.image}}" width="140" height="140"/></a></td>
+          <td><a href="http://localhost:8000'{{item.image}}"><img src="http://localhost:8000{{item.image}}" width="140" height="140"/></a></td>
+
           <td>£{{item.starting_price}}</td>
-          <td>Approx appointment time: {{item.date_ends}}</td>
+          <td>Auction Ends: {{item.date_ends}}</td>
           <td v-if="item.available">(Available)</td>
           <td v-if="!item.available">(Unavailable)</td>
           <td><button class="bg-primary rounded">Message Seller</button></td>
@@ -34,6 +35,7 @@
         </tr>
       </table>
     </div>
+
 </template>
   
 <script>
@@ -50,7 +52,7 @@ export default{
 
     methods: {
         async fetch_items() {
-            //Perform Ajax request to fetch list of scans
+            //Perform Ajax request to fetch list of items
             console.log(`fetching..`)
             let response = await fetch("http://localhost:8000/mainapp/api/items/");
             let data = await response.json();
