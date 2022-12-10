@@ -7,3 +7,4 @@ from .models import User, Recipe, Item
 admin.site.register(User, UserAdmin)
 admin.site.register(Recipe)
 admin.site.register(Item)
+
