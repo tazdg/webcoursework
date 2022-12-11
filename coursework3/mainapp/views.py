@@ -2,11 +2,11 @@ import json
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import Http404
 from django.http import HttpResponse, HttpRequest, JsonResponse
-from mainapp.models import Recipe, Item, User
+from mainapp.models import Recipe, Item, User, Profile
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
 
-from .models import User
+from .models import User, Profile
 from .forms import LoginForm, SignupForm
 
 # Create your views here.
@@ -43,6 +43,42 @@ def items_api(request: HttpRequest) -> HttpResponse:
         newScan = Item.objects.create(title=POST['title'], description = POST['description'] ,starting_price = POST['starting_price'], date_ends = POST['date_ends'], available=POST['available'])
         return JsonResponse(newScan.to_dict())
 
+
+def profile_api(request: HttpRequest) -> HttpResponse:
+    #method to display the profile of the user 
+    user = request.user
+    if request.method == 'GET':
+         return JsonResponse({
+            'My Profile': [
+                profile.to_dict()
+                for profile in Profile.objects.all() #change to get profile only of current user
+            ]
+         })
+'''
+def profile_view(request):
+    user = request.user
+
+    if 'text' in request.POST and request.POST['text']:
+        text = request.POST['text'][:4096]
+        if user.profile:
+            user.profile.text = text
+            user.profile.save()
+        else:
+            profile = Profile(text=text)
+            profile.save()
+            user.profile = profile
+        user.save()
+
+    context = {
+        'user': user,
+        'page': 'profile',
+        'profile': user.profile,
+        'session_key': request.session.session_key,
+        'meta': request.META,
+    }
+
+    return render(request, 'mainapp/pages/profile.html', context)
+'''
 
 
 # def login(request):
@@ -114,3 +150,6 @@ def login_view(request):
 def logout_view(request):
     auth.logout(request)
     return redirect('mainapp:login')
+
+
+    
