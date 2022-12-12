@@ -21,6 +21,7 @@
       <li class="nav-item active"><router-link to="/new-auction" class="nav-link">New Auction</router-link></li>
       <li class="nav-item active"><router-link to="/messages" class="nav-link">Messages</router-link></li>
       <li class="nav-item active"><router-link to="/profile" class="nav-link">Profile</router-link></li>
+      <li class="nav-item active"><router-link to="/test" class="nav-link">Test</router-link></li>
       <li class="text-light">________________________________________________________________</li>
       <li class="nav-item active"><a class="btn" @click="logout()">Log Out</a></li>
     </ul>

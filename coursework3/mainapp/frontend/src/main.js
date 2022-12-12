@@ -7,6 +7,7 @@ import Auctions from './components/Auctions.vue'
 import NewAuction from './components/NewAuction.vue'
 import Messages from './components/Messages.vue'
 import Profile from './components/Profile.vue'
+import Test from './components/Test.vue'
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
 
@@ -16,6 +17,7 @@ const routes = [
     { path: '/new-auction', name: 'NewAuction', component: NewAuction },
     { path: '/messages', name: 'Messages', component: Messages },
     { path: '/profile', name: 'Profile', component: Profile },
+    { path: '/test', name: 'Test', component: Test },
 ]
 
 const router = createRouter({
