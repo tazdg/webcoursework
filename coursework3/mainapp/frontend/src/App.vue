@@ -22,7 +22,7 @@
       <li class="nav-item active"><router-link to="/messages" class="nav-link">Messages</router-link></li>
       <li class="nav-item active"><router-link to="/profile" class="nav-link">Profile</router-link></li>
       <li class="text-light">________________________________________________________________</li>
-      <li class="nav-item active"><a class="btn" href="http://localhost:8000/mainapp/login/">Log Out</a></li>
+      <li class="nav-item active"><a class="btn" @click="logout()">Log Out</a></li>
     </ul>
 
 
@@ -71,9 +71,34 @@
         app_name: 'Auction Genie'
       }
     },
+    methods:{
+      async logout(){
+        console.log(`fetching..`)
+        let response = await fetch("http://localhost:8000/mainapp/logout",
+        {
+          credentials: 
+          "include",
 
+          mode: 
+          "cors",
+
+          referrerPolicy: 
+          "no-referrer",
+        }
+
+        
+        );
+
+        if (response.ok){
+          window.location.replace('http://localhost:8000/mainapp/login')
+        }
+      }
+
+    }
     // components: { Profile }
   }
+
+
 </script>
 
 

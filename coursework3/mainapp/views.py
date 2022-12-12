@@ -20,7 +20,7 @@ def helloworld(request):
     })
 
 
-
+@login_required
 def items_api(request: HttpRequest) -> HttpResponse:
     '''This method gets and posts to the list of scans'''
     if request.method == 'GET':
@@ -75,7 +75,7 @@ def signup_view(request):
             user = auth.authenticate(username=username, password=password)
             if user is not None:
                 auth.login(request, user)
-                return redirect('http://localhost:5173/')
+                return render(request,'mainapp/redirect.html')
 
     return render(request, 'mainapp/signup.html', {'form': SignupForm})
 
@@ -96,7 +96,9 @@ def login_view(request):
             user = auth.authenticate(username=username, password=password)
             if user is not None:
                 auth.login(request, user)
-                return redirect('http://localhost:5173/')
+                return render(request,'mainapp/redirect.html')
+                # return redirect('http://localhost:5173/')
+
 
             # failed authentication
             return render(request, 'error.html', {
@@ -113,4 +115,7 @@ def login_view(request):
 
 def logout_view(request):
     auth.logout(request)
-    return redirect('mainapp:login')
+    # return redirect('mainapp:login')
+    return JsonResponse({})
+
+
