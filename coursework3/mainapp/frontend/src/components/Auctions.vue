@@ -1,26 +1,35 @@
 <template>
-    <div class="auctions">
-        <br>
-        <h2 >Auctions Page</h2>
-        <br>
-        <p>Here you can see all of the auctions being currently held and bid in those auctions</p>
-    </div>
-
+  <div class="auctions">
+    <br>
+    <h2>Auctions Page</h2>
+    <br>
+    <p>Here you can see all of the auctions being currently held and bid in those auctions</p>
+    
     <div>
-        <button class="rounded" @click="fetch_items">Fetch items (remove button later)</button>
-        <table class="table table-bordered">
+      <!-- Search Bar -->
+      <div class="input-group mt-5 mb-5 p-3 bg-info justify-content-center">
+        <input
+          class="bg-warning text-dark"
+          type="text"
+          v-model="search"
+          placeholder="Search items by title.."
+        />
+      </div>
+
+      <!-- Table containing all auction items --> 
+      <table class="table table-bordered">
         <tr>
           <th>Title</th>
           <th>Description</th>
           <th>Picture</th>
           <th>Price</th>
           <th>Auction Ends</th>
-          <th></th>
-          <th></th>
+          <th></th>            
+          <th></th>              
           <th></th>
         </tr>
 
-        <tr v-for="item in items">
+        <tr v-for="item in filteredItems">
           <td>{{item.title}}</td>
 
           <td>{{item.description}}</td>
@@ -35,30 +44,42 @@
         </tr>
       </table>
     </div>
-
+  </div>
 </template>
   
+
 <script>
 export default{ 
-    data() {
-        return {
-            items: [],
-        };
-    },
-    mounted() {
-      this.fetch_items()
-      console.log(`the component is now mounted.`)
+  data() {
+    return {
+      items: [],
+      search: ''
+    };
   },
-
-    methods: {
-        async fetch_items() {
-            //Perform Ajax request to fetch list of items
-            console.log(`fetching..`)
-            let response = await fetch("http://localhost:8000/mainapp/api/items/");
-            let data = await response.json();
-            this.items = data.items;
-        },
+  mounted() {
+    this.fetch_items()
+    console.log(`the component is now mounted.`)
+  },
+  methods: {
+    async fetch_items() {
+      // Perform Ajax request to fetch list of items
+      console.log(`fetching..`)
+      let response = await fetch("http://localhost:8000/mainapp/api/items/");
+      let data = await response.json();
+      this.items = data.items;
     },
-
+  },
+  computed: {
+    filteredItems() {
+      // List items based on title
+      let filteredItems = this.items.filter((item) => {
+        return item.title.toLowerCase().includes(this.search.toLowerCase());
+      })
+      let orderedItems = filteredItems.sort((a, b) => {
+        return b.upvoted - a.upvoted;
+      })
+      return orderedItems;
+    }
+  }
 }
 </script>
