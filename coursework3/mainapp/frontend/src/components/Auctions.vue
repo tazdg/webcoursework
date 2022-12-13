@@ -71,14 +71,9 @@ export default{
   },
   computed: {
     filteredItems() {
-      // List items based on title
-      let filteredItems = this.items.filter((item) => {
-        return item.title.toLowerCase().includes(this.search.toLowerCase());
-      })
-      let orderedItems = filteredItems.sort((a, b) => {
-        return b.upvoted - a.upvoted;
-      })
-      return orderedItems;
+      // List items based on title & description - includes lower cased ver.
+      return this.items.filter(item => item.title.toLowerCase().includes(this.search.toLowerCase()) + item.description.toLowerCase().includes(this.search.toLowerCase())
+      );
     }
   }
 }
