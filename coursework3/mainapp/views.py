@@ -51,34 +51,10 @@ def profile_api(request: HttpRequest) -> HttpResponse:
          return JsonResponse({
             'My Profile': [
                 profile.to_dict()
-                for profile in Profile.objects.all() #change to get profile only of current user
+                for profile in Profile.objects.all()  
             ]
          })
-'''
-def profile_view(request):
-    user = request.user
 
-    if 'text' in request.POST and request.POST['text']:
-        text = request.POST['text'][:4096]
-        if user.profile:
-            user.profile.text = text
-            user.profile.save()
-        else:
-            profile = Profile(text=text)
-            profile.save()
-            user.profile = profile
-        user.save()
-
-    context = {
-        'user': user,
-        'page': 'profile',
-        'profile': user.profile,
-        'session_key': request.session.session_key,
-        'meta': request.META,
-    }
-
-    return render(request, 'mainapp/pages/profile.html', context)
-'''
 
 
 # def login(request):
@@ -105,6 +81,8 @@ def signup_view(request):
             # set user's password
             new_user.set_password(password)
             new_user.save()
+            #create a profile
+            new_user = Profile.objects.create(username=username) # check this
             # authenticate user
             # establishes a session, will add user object as attribute
             # on request objects, for all subsequent requests until logout
