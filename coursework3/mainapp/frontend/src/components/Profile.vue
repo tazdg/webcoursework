@@ -8,7 +8,7 @@
 
 <div>
 <button @click="fetch_Profile">Fetch profile</button>
-<div>{{profile.email}}</div>
+<div></div> <!--put data here - next thing to sort out-->
 </div>
 </template>
 

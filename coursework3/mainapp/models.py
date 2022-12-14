@@ -49,19 +49,22 @@ class Item(models.Model):
 
 class Profile(models.Model): 
     user = models.OneToOneField('User', on_delete=models.CASCADE, null=True)
-    email = models.CharField(max_length=50)
+    #email = models.CharField(max_length=50, null=True)
     image = models.ImageField(upload_to='images')
     city = models.CharField(max_length=50, null=True)
 
     def __str__(self):
         return f"{self.user.username} ({self.member_check})"
-        # was 
+
 
     def to_dict(self): #method is applied to all the profile objects
         return {
-            'user': self.user, #serialise this
+            'user': self.user.username,
+            #'email': self.email,
+            'DOB': self.user.date_of_birth,
             'image': self.image.url if self.image else None,
             'city': self.city,
+
         }
 
     @property

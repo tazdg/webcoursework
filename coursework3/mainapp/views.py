@@ -43,7 +43,6 @@ def items_api(request: HttpRequest) -> HttpResponse:
         newScan = Item.objects.create(title=POST['title'], description = POST['description'] ,starting_price = POST['starting_price'], date_ends = POST['date_ends'], available=POST['available'])
         return JsonResponse(newScan.to_dict())
 
-
 def profile_api(request: HttpRequest) -> HttpResponse:
     #method to display the profile of the user 
     user = request.user
