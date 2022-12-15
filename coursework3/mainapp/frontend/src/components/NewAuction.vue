@@ -1,3 +1,4 @@
+
 <template>
     <div class="new-auction">
         <br>
@@ -5,14 +6,15 @@
     </div>
 
     <div class="border rounded bg-light shadow p-4">
-    <div >
+    <form id="logout-form" action="/logout" method="POST" role="form">
+      <input type="hidden" name="_token" :value="csrf">
       <input class="form-control m-0.5 center-block" v-model="title" placeholder="Auction Title">
       <br/>
       <input class="form-control m-0.5 center-block" v-model="description" placeholder="Description">
 
-      <!-- Find how to add image to v-model -->
+      <!-- Find how to add image -->
       <br/>
-      <input class="form-control m-0.5 center-block" v-on:change="image" type="file" id="img" name="img" accept="image/*">
+      <!-- <input class="form-control m-0.5 center-block" v-on:change="image" type="file" id="img" name="img" accept="image/*"> -->
       <br/>
       <input class="form-control m-0.5 center-block" v-model="starting_price" placeholder="Starting Price">
       <br/>
@@ -25,25 +27,40 @@
         <option  value="False">Unavailable</option>
       </select>
       
-    </div>
+    </form>
   </div>
   
   <button class="bg-success rounded" @click="create_new_item">Create Auction</button>
 </template>
-  
+
+
 <script>
   export default{
     data(){
       return {
-        name: ""
+        name: "",
+        items: [],
+        // csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content')
       }
     },
     
     methods: {
       create_new_item() {
-        console.log(`Creating new item for auction ${this.title}`)
+        // const token = localStorage.getItem('token')
+        console.log(`Creating new item for auction`)
         fetch("http://localhost:8000/mainapp/api/items/", {
+
+          credentials: 
+          "include",
+
+          mode: 
+          "cors",
+
+          referrerPolicy: 
+          "no-referrer",
+
           method: "POST",
+          
           body: JSON.stringify({
             title: this.title,
             description: this.description,
@@ -52,34 +69,10 @@
             date_ends: this.date_ends,
             available: this.available,
           })
-        })
+        });
+        
       },
     }
   }
-
-    // $(function () {
-    //     // connecting click on profile image with click on upload file button
-    //     $('#profile-img').click(function() {
-    //         console.log('Uploading image...')
-    //         $("#img_file").click()
-    //     });
-
-    //     $('#img_file').change(function uploadFile() {
-    //         var formdata = new FormData()
-    //         var file = document.getElementById('img_file').files[0]
-    //         formdata.append('img_file', file)
-    //         formdata.append('csrfmiddlewaretoken', $('input[name=csrfmiddlewaretoken]').val())
-    //         $.ajax({
-    //             type : 'POST',
-    //             url  : "{% url 'mainapp:uploadimage api' %}",
-    //             data : formdata,
-    //             success: function(data) {
-    //                 $('#profile-img').attr("src",data);
-    //             },
-    //             processData : false,
-    //             contentType : false,
-    //         })
-    //     })
-    // })
 
 </script>

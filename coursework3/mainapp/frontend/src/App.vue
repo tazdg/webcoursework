@@ -8,7 +8,8 @@
 
 <div>
 <nav class="navbar navbar-expand-sm navbar-light bg-light fixed-top">
-  <a class="navbar-brand" href="#">Auction Genie</a>
+  <a class="navbar-brand text-light" href="#">__</a>
+  <a class="navbar-brand text-info" href="#">Auction Genie</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -22,8 +23,8 @@
       <li class="nav-item active"><router-link to="/messages" class="nav-link">Messages</router-link></li>
       <li class="nav-item active"><router-link to="/profile" class="nav-link">Profile</router-link></li>
       <li class="nav-item active"><router-link to="/test" class="nav-link">Test</router-link></li>
-      <li class="text-light">________________________________________________________________</li>
-      <li class="nav-item active"><a class="btn" @click="logout()">Log Out</a></li>
+      <li class="text-light">____</li>
+      <li class="nav-item activ border border-info border-3 rounded"><a class="btn" @click="logout()">Log Out</a></li>
     </ul>
 
 
@@ -86,8 +87,6 @@
           referrerPolicy: 
           "no-referrer",
         }
-
-        
         );
 
         if (response.ok){

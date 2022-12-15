@@ -11,7 +11,7 @@
       <h6 class="mt-5">Search</h6>
       <div class="input-group mb-5 justify-content-center">
         <input
-          class="bg-light text-dark rounded w-50 border border-info border-3"
+          class="bg-light text-dark w-50 rounded border border-info border-3"
           type="text"
           v-model="search"
           placeholder="Search items by title or description..."
