@@ -48,7 +48,7 @@
     
   <div>
 
-    <!-- <Profile/> -->
+    <!--<Profile/>-->
   </div>
 
   <!-- <router-link to="/">Home</router-link>

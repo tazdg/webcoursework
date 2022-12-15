@@ -48,13 +48,27 @@ def profile_api(request: HttpRequest) -> HttpResponse:
     user = request.user
     if request.method == 'GET':
          return JsonResponse({
-            'My Profile': [
+             'profiles':[
                 profile.to_dict()
-                for profile in Profile.objects.all()  
+                for profile in Profile.objects.filter(user=user)  # return profile of user that's logged in
             ]
          })
 
+'''
+to return all profiles
 
+def profile_api(request: HttpRequest) -> HttpResponse:
+    #method to display the profile of the user 
+    user = request.user
+    if request.method == 'GET':
+         return JsonResponse({
+            'profiles': [
+                profile.to_dict()
+                for profile in Profile.objects.all()  #
+            ]
+         })
+
+'''
 
 # def login(request):
 #     return render(request, 'mainapp/login.html', {
@@ -81,7 +95,7 @@ def signup_view(request):
             new_user.set_password(password)
             new_user.save()
             #create a profile
-            new_user = Profile.objects.create(username=username) # check this
+            # new_user = Profile.objects.create(username=username) # check this
             # authenticate user
             # establishes a session, will add user object as attribute
             # on request objects, for all subsequent requests until logout
