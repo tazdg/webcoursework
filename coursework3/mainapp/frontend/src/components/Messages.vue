@@ -23,6 +23,10 @@
           <td><button class="bg-danger rounded" @click="delete_questionanswer(questionanswer)">Delete</button></td>
         </tr>
       </table>
+
+      <br>
+      <h6>Message</h6>
+      <textarea class="form-control" name='text' rows='4' placeholder='Send message to seller'></textarea>
     </div>
   </template>
   
