@@ -2,7 +2,7 @@ import json
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import Http404
 from django.http import HttpResponse, HttpRequest, JsonResponse
-from mainapp.models import Recipe, Item, User
+from mainapp.models import Recipe, Item, User, Bid
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
 

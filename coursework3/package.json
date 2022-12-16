@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "vue-currency-input": "^3.0.3"
+  }
+}

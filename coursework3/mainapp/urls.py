@@ -11,4 +11,5 @@ urlpatterns = [
     path('signup/', signup_view, name='signup'),
     path('logout/', logout_view, name='logout'),
     path('api/items/', items_api),
+    path('api/item/<int:item_id>/', items_api, name="item api"),
 ]

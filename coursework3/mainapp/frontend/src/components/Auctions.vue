@@ -29,7 +29,7 @@
           <th></th>
         </tr>
 
-        <tr v-for="item in filteredItems">
+        <tr v-for="item in filteredItems" :key="item.id">
           <td>{{item.title}}</td>
 
           <td>{{item.description}}</td>
@@ -40,13 +40,16 @@
           <td v-if="item.available">(Available)</td>
           <td v-if="!item.available">(Unavailable)</td>
           <td><button class="bg-primary rounded">Message Seller</button></td>
-          <td><button class="bg-success rounded" @click="delete_scan(scan)">Bid</button></td>
+          <td>
+            <router-link :to="`/${item.id}`">
+              <button class="bg-success rounded">Bid</button></router-link>   
+          </td>
         </tr>
       </table>
     </div>
   </div>
 </template>
-  
+
 
 <script>
 export default{ 
